@@ -7,7 +7,7 @@
 \usetheme{Copenhagen}
 \setbeamertemplate{navigation symbols}{}
 
-\title{The Part-Time Parliament}
+\title{The FLP Theorem}
 \author{
   Jacopo Notarstefano\\
   \texttt{jacopo.notarstefano [at] gmail.com}
@@ -17,5 +17,76 @@
 \begin{document}
   \begin{frame}[plain]
     \titlepage
+  \end{frame}
+
+  \begin{frame}{The Distributed Consensus Problem}
+    \begin{definition}{}
+    \end{definition}
+  \end{frame}
+
+  \begin{frame}{Consensus Protocol}
+  \end{frame}
+
+  \begin{frame}{Message System}
+  \end{frame}
+
+  \begin{frame}{Partial correctness}
+    \begin{definition}[Partial correctness]
+      A consensus protocol is \textbf{partially correct} if:
+      \begin{enumerate}
+        \item No accessible configuration has more than one decision value.
+        \item For each \(v\in \{0,1\}\), some accessible configuration has decision value \(v\).
+      \end{enumerate}
+    \end{definition}
+  \end{frame}
+
+  \begin{frame}{Total correctness in spite of one fault}
+    A process \(p\) is \textbf{nonfaulty} in run if it takes infinitely many steps, otherwise it is \textbf{faulty}.
+
+    A run is \textbf{admissible} if at most one process is faulty and all messages sent to nonfaulty processes are eventually received.
+
+    A run is \textbf{deciding} if some process reaches a decision state.
+
+    \begin{definition}[Total correctness in spite of one fault]
+      A consensus protocol \(P\) is \textbf{totaly correct in spite of one fault} if it is partially correct and every admissibile run is deciding.
+    \end{definition}
+  \end{frame}
+
+  \begin{frame}{Main result}
+    \begin{theorem}[Fischer, Lynch, Paterson]
+      No consensus protocol is totally correct in spite of one fault.
+    \end{theorem}
+    \begin{proof}[Proof (sketch)]
+      \begin{enumerate}
+        \item There is some initial bivalent configuration.
+        \item We construct an admissible run that avoids ever taking a step that would commit the system to a decision.
+      \end{enumerate}
+    \end{proof}
+  \end{frame}
+
+  \begin{frame}{Lemma 1}
+    \begin{lemma}
+    \end{lemma}
+    \begin{proof}
+    \end{proof}
+  \end{frame}
+
+  \begin{frame}{Lemma 2}
+    \begin{lemma}
+    \end{lemma}
+    \begin{proof}
+    \end{proof}
+  \end{frame}
+
+  \begin{frame}{Lemma 3}
+    \begin{lemma}
+    \end{lemma}
+    \begin{proof}
+    \end{proof}
+  \end{frame}
+
+  \begin{frame}{Proof of main result}
+    \begin{proof}
+    \end{proof}
   \end{frame}
 \end{document}
