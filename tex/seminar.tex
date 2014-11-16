@@ -8,7 +8,7 @@
 \setbeamertemplate{navigation symbols}{}
 
 \title{The FLP Theorem}
-\author{
+\author[Jacopo Notarstefano]{
   Jacopo Notarstefano\\
   \texttt{jacopo.notarstefano [at] gmail.com}
 }
@@ -43,9 +43,15 @@
   \begin{frame}{Total correctness in spite of one fault}
     A process \(p\) is \textbf{nonfaulty} in run if it takes infinitely many steps, otherwise it is \textbf{faulty}.
 
+    \vspace{0.25cm}
+
     A run is \textbf{admissible} if at most one process is faulty and all messages sent to nonfaulty processes are eventually received.
 
+    \vspace{0.25cm}
+
     A run is \textbf{deciding} if some process reaches a decision state.
+
+    \vspace{0.25cm}
 
     \begin{definition}[Total correctness in spite of one fault]
       A consensus protocol \(P\) is \textbf{totaly correct in spite of one fault} if it is partially correct and every admissibile run is deciding.
@@ -53,9 +59,10 @@
   \end{frame}
 
   \begin{frame}{Main result}
-    \begin{theorem}[Fischer, Lynch, Paterson]
+    \begin{theorem}[Fischer, Lynch, Paterson 1985]
       No consensus protocol is totally correct in spite of one fault.
     \end{theorem}
+
     \begin{proof}[Proof (sketch)]
       \begin{enumerate}
         \item There is some initial bivalent configuration.
