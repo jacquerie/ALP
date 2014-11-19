@@ -63,11 +63,14 @@
       No consensus protocol is totally correct in spite of one fault.
     \end{theorem}
 
+    \vspace{0.25cm}
+
+    A configuration is \textbf{bivalent} if it has two decision values. It is instead \textbf{\(0\)-valent} or \textbf{\(1\)-valent} according to the corresponding decision value.
+
+    \vspace{0.25cm}
+
     \begin{proof}[Proof (sketch)]
-      \begin{enumerate}
-        \item There is some initial bivalent configuration.
-        \item We construct an admissible run that avoids ever taking a step that would commit the system to a decision.
-      \end{enumerate}
+      Given an initial bivalent configuration, we construct an admissible run that at each stage results in a bivalent configuration.
     \end{proof}
   \end{frame}
 
