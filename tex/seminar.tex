@@ -61,7 +61,18 @@
     \end{figure}
   \end{frame}
 
-  \begin{frame}{Message System}
+  \begin{frame}{Message system}
+    A \textbf{message} is a pair \((p,m)\), where \(p\) is the name of the destination process and \(m\) is a ``message value'' from a fixed universe \(M\).
+
+    \vspace{0.25cm}
+
+    \begin{definition}[Message system]
+      The \textbf{message system} mantains a multiset, called the \textbf{message buffer}, of messages that have been sent but not yet delivered. It supports two abstract operations:
+      \begin{description}
+        \item[\texttt{ send(p,m)}:] Places \((p,m)\) in the message buffer.
+	\item[\texttt{receive(p)}:] Deletes some message \((p,m)\) from the buffer and returns \(m\), in which case we say \((p,m)\) is \textbf{delivered}, or returns the special null marker \(\varnothing\) and leaves the buffer unchanged.
+      \end{description}
+    \end{definition}
   \end{frame}
 
   \begin{frame}{Partial correctness}
