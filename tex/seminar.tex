@@ -4,8 +4,13 @@
 \usepackage[utf8]{inputenc}
 \usepackage{tikz}
 
+\bibliographystyle{amsalpha}
+
 \usetheme{Copenhagen}
 \setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{bibliography entry title}{}
+\setbeamertemplate{bibliography entry location}{}
+\setbeamertemplate{bibliography entry note}{}
 
 \title{The FLP Theorem}
 \author[Jacopo Notarstefano]{
@@ -109,7 +114,7 @@
   \end{frame}
 
   \begin{frame}{Main result}
-    \begin{theorem}[Fischer, Lynch, Paterson 1985]
+    \begin{theorem}[Fischer, Lynch, Paterson \cite{FLP85}]
       No consensus protocol is totally correct in spite of one fault.
     \end{theorem}
 
@@ -191,5 +196,9 @@
   \begin{frame}{Proof of main result}
     \begin{proof}[Proof (main result)]
     \end{proof}
+  \end{frame}
+
+  \begin{frame}{Bibliography}
+    \bibliography{seminar.bib}
   \end{frame}
 \end{document}
