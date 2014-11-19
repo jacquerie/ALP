@@ -85,7 +85,7 @@
 
     \vspace{0.25cm}
 
-    In other words: \textbf{schedules about disjoint processes commute}.
+    In other words: \textbf{schedules about disjoint processes commute with each other}.
   \end{frame}
 
   \begin{frame}{Proof of Lemma 1}
@@ -100,13 +100,19 @@
             \node (C2) at (2,-1) [configuration] {\(C_2\)};
             \node (C3) at (4,0) [configuration] {\(C_3\)};
 
-            \draw[-latex] (C) to (C1);
-            \draw[-latex] (C) to (C2);
-            \draw[-latex, dashed] (C1) to (C3);
-            \draw[-latex, dashed] (C2) to (C3);
+            \draw[-latex] (C) to node[above] {\(\sigma_1\)} (C1);
+            \draw[-latex] (C) to node[below] {\(\sigma_2\)} (C2);
+            \draw[-latex, dashed] (C1) to node[above] {\(\sigma_2\)} (C3);
+            \draw[-latex, dashed] (C2) to node[below] {\(\sigma_1\)} (C3);
           \end{tikzpicture}
         }
       \end{figure}
+
+      Because the sets of processes are disjoint, an event in \(\sigma_1\) applicable to \(C\) is applicable to \(C_2\) as well.
+
+      \vspace{0.25cm}
+
+      Because of determinism, after all events are processed they must end up in the same state.
     \end{proof}
   \end{frame}
 
