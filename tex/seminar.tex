@@ -24,7 +24,41 @@
     \end{definition}
   \end{frame}
 
-  \begin{frame}{Consensus Protocol}
+  \begin{frame}{Consensus protocol}
+    \begin{definition}[Consensus protocol]
+      A \textbf{consensus protocol} is an asynchronous system of \(N\) processes (\(N\ge 2\)). Each process \(p\) has a one-bit \textbf{input register} \(x_p\), an \textbf{output register} \(y_p\) with values in \(\{\bot, 0, 1\}\) and an unbounded amount of internal storage.
+    \end{definition}
+
+    \vspace{0.25cm}
+
+    \textbf{Initial states} prescribe fixed starting values for all but the input register; in particular, the output register starts with value \(\bot\).
+
+    \vspace{0.25cm}
+
+    \(p\) acts deterministically according to a \textbf{transition} function.
+  \end{frame}
+
+  \begin{frame}{Decision states}
+    The states in which the output register has value \(0\) or \(1\) are distinguished as being \textbf{decision states}. The transition function cannot change the value of the output register once the process has reached a decision state; that is, the output register is ``write-once''.
+
+    \vspace{0.25cm}
+
+    \begin{figure}
+      \makebox[\textwidth][c]{
+        \begin{tikzpicture}
+          \tikzstyle{process}=[circle, draw, inner sep=0pt, minimum size=120pt]
+
+	  \node (p) at (0,0) [process] {};
+	  \node (xp) at (-0.75, -0.25) [] {\(x_p\)};
+          \node (yp) at ( 0.75, -0.25) [] {\(y_p\)};
+	  \node (status) at (0, -1) [] {\(\text{status}\)};
+
+          \draw (-1, -0.5) -- (-1, 0) -- (-0.5, 0) -- (-0.5, -0.5) -- cycle;
+          \draw ( 1, -0.5) -- ( 1, 0) -- ( 0.5, 0) -- ( 0.5, -0.5) -- cycle;
+	  \draw (-1, -1.25) -- (-1, -0.75) -- (1, -0.75) -- (1, -1.25) -- cycle;
+        \end{tikzpicture}
+      }
+    \end{figure}
   \end{frame}
 
   \begin{frame}{Message System}
