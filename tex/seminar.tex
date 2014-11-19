@@ -31,6 +31,10 @@
   \end{frame}
 
   \begin{frame}{Partial correctness}
+    A configuration \(C\) has \textbf{decision value} \(v\) if some process \(p\) is in a decision state with \(y_p = v\).
+
+    \vspace{0.25cm}
+
     \begin{definition}[Partial correctness]
       A consensus protocol is \textbf{partially correct} if:
       \begin{enumerate}
@@ -65,12 +69,12 @@
 
     \vspace{0.25cm}
 
-    A configuration is \textbf{bivalent} if it has two decision values. It is instead \textbf{\(0\)-valent} or \textbf{\(1\)-valent} according to the corresponding decision value.
+    A configuration is \textbf{bivalent} if the set of decision values of configurations reachable from it has \(2\) elements. It is instead \textbf{\(0\)-valent} or \textbf{\(1\)-valent} according to the corresponding value.
 
     \vspace{0.25cm}
 
     \begin{proof}[Proof (sketch)]
-      Given an initial bivalent configuration, we construct an admissible run that at each stage results in a bivalent configuration.
+      Given an initial bivalent configuration, we construct an admissible run that at each stage results in another bivalent configuration.
     \end{proof}
   \end{frame}
 
