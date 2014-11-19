@@ -46,12 +46,13 @@
     \begin{figure}
       \makebox[\textwidth][c]{
         \begin{tikzpicture}
-          \tikzstyle{process}=[circle, draw, inner sep=0pt, minimum size=120pt]
+          \tikzstyle{process}=[circle, draw, inner sep=0pt, minimum size=108pt]
 
-	  \node (p) at (0,0) [process] {};
-	  \node (xp) at (-0.75, -0.25) [] {\(x_p\)};
+          \node (p) at (0, 0) [process] {};
+          \node (plabel) at (0, 0.75) [] {\(p\)};
+          \node (xp) at (-0.75, -0.25) [] {\(x_p\)};
           \node (yp) at ( 0.75, -0.25) [] {\(y_p\)};
-	  \node (status) at (0, -1) [] {\(\text{status}\)};
+          \node (status) at (0, -1) [] {\(\text{status}\)};
 
           \draw (-1, -0.5) -- (-1, 0) -- (-0.5, 0) -- (-0.5, -0.5) -- cycle;
           \draw ( 1, -0.5) -- ( 1, 0) -- ( 0.5, 0) -- ( 0.5, -0.5) -- cycle;
