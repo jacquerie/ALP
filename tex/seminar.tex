@@ -2,7 +2,9 @@
 
 \usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
+
 \usepackage{tikz}
+\usetikzlibrary{shapes.symbols}
 
 \bibliographystyle{amsalpha}
 
@@ -54,14 +56,14 @@
           \tikzstyle{process}=[circle, draw, inner sep=0pt, minimum size=108pt]
 
           \node (p) at (0, 0) [process] {};
-          \node (plabel) at (0, 0.75) [] {\(p\)};
+          \node (plabel) at (0, 0.75) [] {\(\mathbf{p}\)};
           \node (xp) at (-0.75, -0.25) [] {\(x_p\)};
           \node (yp) at ( 0.75, -0.25) [] {\(y_p\)};
           \node (status) at (0, -1) [] {\(\text{status}\)};
 
           \draw (-1, -0.5) -- (-1, 0) -- (-0.5, 0) -- (-0.5, -0.5) -- cycle;
           \draw ( 1, -0.5) -- ( 1, 0) -- ( 0.5, 0) -- ( 0.5, -0.5) -- cycle;
-	  \draw (-1, -1.25) -- (-1, -0.75) -- (1, -0.75) -- (1, -1.25) -- cycle;
+          \draw (-1, -1.25) -- (-1, -0.75) -- (1, -0.75) -- (1, -1.25) -- cycle;
         \end{tikzpicture}
       }
     \end{figure}
@@ -79,6 +81,49 @@
 	\item[\texttt{receive(p)}:] Deletes some message \((p,m)\) from the buffer and returns \(m\), in which case we say \((p,m)\) is \textbf{delivered}, or returns the special null marker \(\varnothing\) and leaves the buffer unchanged.
       \end{description}
     \end{definition}
+  \end{frame}
+
+  \begin{frame}{Nondeterministic messaging}
+    The message system acts nondeterministically, subject only to the condition that if \texttt{receive(p)} is performed infinitely many times, then every message \((p,m)\) in the message buffer is eventually delivered.
+
+    \vspace{0.25cm}
+
+    \begin{figure}
+      \makebox[\textwidth][c]{
+        \begin{tikzpicture}
+          \tikzstyle{process}=[draw, circle, inner sep=0pt, minimum size=48pt]
+          \tikzstyle{system}=[draw, cloud, cloud puffs=13, inner sep=0pt, minimum width=108pt, minimum height=84pt]
+
+          \node (system) at (0, 0) [system] {};
+          \node (systemlabel) at (0, 0) [] {Message system};
+
+          \node (p) at (-3,  1) [process] {};
+          \node (plabel) at (-3, 1.25) [] {\(\mathbf{p}\)};
+          \draw (-3.375, 0.875) -- (-3.375, 0.75) -- (-3.25, 0.75) -- (-3.25, 0.875) -- cycle;
+          \draw (-2.625, 0.875) -- (-2.625, 0.75) -- (-2.75, 0.75) -- (-2.75, 0.875) -- cycle;
+          \draw (-3.375, 0.625) -- (-3.375, 0.5) -- (-2.625, 0.5) -- (-2.625, 0.625) -- cycle;
+
+          \node (q) at (-2, -2) [process] {};
+          \node (qlabel) at (-2, -1.75) [] {\(\mathbf{q}\)};
+          \draw (-2.375, -2.125) -- (-2.375, -2.25) -- (-2.25, -2.25) -- (-2.25, -2.125) -- cycle;
+          \draw (-1.625, -2.125) -- (-1.625, -2.25) -- (-1.75, -2.25) -- (-1.75, -2.125) -- cycle;
+          \draw (-2.375, -2.375) -- (-2.375, -2.5) -- (-1.625, -2.5) -- (-1.625, -2.375) -- cycle;
+
+          \node (r) at ( 3,  1) [process] {};
+          \node (rlabel) at (3, 1.25) [] {\(\mathbf{r}\)};
+          \draw (3.375, 0.875) -- (3.375, 0.75) -- (3.25, 0.75) -- (3.25, 0.875) -- cycle;
+          \draw (2.625, 0.875) -- (2.625, 0.75) -- (2.75, 0.75) -- (2.75, 0.875) -- cycle;
+          \draw (3.375, 0.625) -- (3.375, 0.5) -- (2.625, 0.5) -- (2.625, 0.625) -- cycle;
+
+          \draw (p) -- (system) [dashed] {};
+          \draw (q) -- (system) [dashed] {};
+          \draw (r) -- (system) [dashed] {};
+        \end{tikzpicture}
+      }
+    \end{figure}
+  \end{frame}
+
+  \begin{frame}{Configurations and steps}
   \end{frame}
 
   \begin{frame}{Partial correctness}
