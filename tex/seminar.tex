@@ -245,31 +245,29 @@
   \end{frame}
 
   \begin{frame}{Proof of Lemma 1}
-    \begin{proof}[Proof (Lemma 1)]
-      \begin{figure}
-        \makebox[\textwidth][c]{
-          \begin{tikzpicture}
-            \tikzstyle{configuration}=[draw,circle,inner sep=0pt,minimum size=20pt]
+    \begin{figure}
+      \makebox[\textwidth][c]{
+        \begin{tikzpicture}
+          \tikzstyle{configuration}=[draw,circle,inner sep=0pt,minimum size=20pt]
 
-            \node (C) at (0,0) [configuration] {\(C\)};
-            \node (C1) at (2,1) [configuration] {\(C_1\)};
-            \node (C2) at (2,-1) [configuration] {\(C_2\)};
-            \node (C3) at (4,0) [configuration] {\(C_3\)};
+          \node (C) at (0,0) [configuration] {\(C\)};
+          \node (C1) at (2,1) [configuration] {\(C_1\)};
+          \node (C2) at (2,-1) [configuration] {\(C_2\)};
+          \node (C3) at (4,0) [configuration] {\(C_3\)};
 
-            \draw[-latex] (C) to node[above] {\(\sigma_1\)} (C1);
-            \draw[-latex] (C) to node[below] {\(\sigma_2\)} (C2);
-            \draw[-latex, dashed] (C1) to node[above] {\(\sigma_2\)} (C3);
-            \draw[-latex, dashed] (C2) to node[below] {\(\sigma_1\)} (C3);
-          \end{tikzpicture}
-        }
-      \end{figure}
+          \draw[-latex] (C) to node[above] {\(\sigma_1\)} (C1);
+          \draw[-latex] (C) to node[below] {\(\sigma_2\)} (C2);
+          \draw[-latex, dashed] (C1) to node[above] {\(\sigma_2\)} (C3);
+          \draw[-latex, dashed] (C2) to node[below] {\(\sigma_1\)} (C3);
+        \end{tikzpicture}
+      }
+    \end{figure}
 
-      Because the sets of processes are disjoint, an event in \(\sigma_1\) applicable to \(C\) is applicable to \(C_2\) as well.
+    Because the sets of processes are disjoint, an event in \(\sigma_1\) applicable to \(C\) is applicable to \(C_2\) as well.
 
-      \vspace{0.25cm}
+    \vspace{0.25cm}
 
-      Because of determinism, after all events are processed they must end up in the same state.
-    \end{proof}
+    Because of determinism, after all events are processed they must end up in the same state. \qed
   \end{frame}
 
   \begin{frame}{Lemma 2}
@@ -279,8 +277,15 @@
 
     \vspace{0.25cm}
 
-    \begin{proof}[Proof (Lemma 2)]
-    \end{proof}
+    Assume by contradiction that there isn't. Then, by partial correctness, \(P\) must have both \(0\)-valent and \(1\)-valent initial configurations.
+
+    \vspace{0.25cm}
+
+    Let's call two initial configurations \textbf{adjacent} if they differ only in the initial value \(x_p\) of a single process \(p\). Any two initial configurations are joined by a chain of inital configurations, each adjacent to the next.
+  \end{frame}
+
+  \begin{frame}{Proof of Lemma 2}
+    TODO
   \end{frame}
 
   \begin{frame}{Lemma 3}
