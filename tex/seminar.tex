@@ -43,7 +43,15 @@
   \end{frame}
 
   \begin{frame}{The FLP Theorem}
-    TODO
+    In 1985, Michael Fischer, Nancy Lynch, and Michael Paterson proved the surprising result that no completely asynchronous protocol can tolerate even a single unannounced process death.
+
+    \vspace{0.25cm}
+
+    Their proof did not consider Byzantine failures, and assumed that the message system is reliable — it delivers all messages correctly and exactly once.
+
+    \vspace{0.25cm}
+
+    Nevertheless, even with these assumptions, the stopping of a single process at an inopportune time can cause any distributed consensus protocol to fail to reach agreement.
   \end{frame}
 
   \begin{frame}{Consensus protocol}
