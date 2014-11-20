@@ -155,9 +155,9 @@
   \end{frame}
 
   \begin{frame}{Primitive steps and applicable events}
-    Let \(C\) be a configuration. The step occurs in two phases:
+    Let \(C\) be a configuration. A step consists of two phases:
     \begin{enumerate}
-      \item \texttt{receive(p)} is performed on the message buffer in \(C\) to obtain a value \(m\in M\cup\{\varnothing\}\).
+      \item A \texttt{receive(p)} is performed on the message buffer in \(C\) to obtain a value \(m\in M\cup\{\varnothing\}\).
       \item Depending on \(p\)'s internal state in \(C\) and on \(m\), \(p\) enters a new internal state and sends a finite set of messages to other processes.
     \end{enumerate}
 
@@ -167,11 +167,19 @@
 
     \vspace{0.25cm}
 
-    An event \(e\) that \emph{could happen} at configuration \(C\) is called \textbf{applicable} and the resulting configuration is denoted \(e(C)\).
+    An event \(e\) that \emph{could happen} at configuration \(C\) is called \textbf{applicable}, and the resulting configuration is denoted \(e(C)\).
   \end{frame}
 
   \begin{frame}{Schedules and runs}
-    TODO
+    A \textbf{schedule} from \(C\) is a finite or infinite sequences \(\sigma\) of applicable events, in turn, starting from \(C\). The associated sequence of steps is called a \textbf{run}.
+
+    \vspace{0.25cm}
+
+    If \(\sigma\) is finite, we let \(\sigma(C)\) denote the resulting configuration, which is said to be \textbf{reachable} from \(C\).
+
+    \vspace{0.25cm}
+
+    A configuration reachable from some initial configuration is said to be \textbf{accessible}.
   \end{frame}
 
   \begin{frame}{Partial correctness}
