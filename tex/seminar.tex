@@ -63,9 +63,7 @@
   \end{frame}
 
   \begin{frame}{Consensus protocol}
-    \begin{definition}[Consensus protocol]
-      A \textbf{consensus protocol} is an asynchronous system of \(N\) processes (\(N\ge 2\)). Each process \(p\) has a one-bit \textbf{input register} \(x_p\), an \textbf{output register} \(y_p\) with values in \(\{\bot, 0, 1\}\) and an unbounded amount of internal storage.
-    \end{definition}
+    A \textbf{consensus protocol} is an asynchronous system of \(N\) processes (\(N\ge 2\)). Each process \(p\) has a one-bit \textbf{input register} \(x_p\), an \textbf{output register} \(y_p\) with values in \(\{\bot, 0, 1\}\) and an unbounded amount of internal storage.
 
     \vspace{0.25cm}
 
@@ -105,13 +103,11 @@
 
     \vspace{0.25cm}
 
-    \begin{definition}[Message system]
-      The \textbf{message system} mantains a multiset, called the \textbf{message buffer}, of messages that have been sent but not yet delivered. It supports two abstract operations:
-      \begin{description}
-        \item[\texttt{ send(p,m)}:] Places \((p,m)\) in the message buffer.
-	\item[\texttt{receive(p)}:] Deletes some message \((p,m)\) from the buffer and returns \(m\), in which case we say \((p,m)\) is \textbf{delivered}, or returns the special null marker \(\varnothing\) and leaves the buffer unchanged.
-      \end{description}
-    \end{definition}
+    The \textbf{message system} mantains a multiset, called the \textbf{message buffer}, of messages that have been sent but not yet delivered. It supports two abstract operations:
+    \begin{description}
+      \item[\texttt{ send(p,m)}:] Places \((p,m)\) in the message buffer.
+	  \item[\texttt{receive(p)}:] Deletes some message \((p,m)\) from the buffer and returns \(m\), in which case we say \((p,m)\) is \textbf{delivered}, or returns the special null marker \(\varnothing\) and leaves the buffer unchanged.
+    \end{description}
   \end{frame}
 
   \begin{frame}{Nondeterministic messaging}
