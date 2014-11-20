@@ -285,7 +285,15 @@
   \end{frame}
 
   \begin{frame}{Proof of Lemma 2}
-    TODO
+    Hence, there must exist a \(0\)-valent initial configuration \(C_0\) adjacent to a \(1\)-valent configuration \(C_1\). Let \(p\) be the process in whose initial value they differ.
+
+    \vspace{0.25cm}
+
+    Consider some admissibile deciding run from \(C_0\) in which process \(p\) takes no steps, and let \(\sigma\) be the associated schedule. Then \(\sigma\) can be applied to \(C_1\) as well, and the corresponding configurations will be identical except for \(p\)'s internal state.
+
+    \vspace{0.25cm}
+
+    Both runs reach the same decision value; if it is \(1\) then \(C_0\) was ambivalent, if it is \(0\) then \(C_1\) was ambivalent. \qed
   \end{frame}
 
   \begin{frame}{Lemma 3}
