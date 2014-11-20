@@ -27,7 +27,15 @@
   \end{frame}
 
   \begin{frame}{The Distributed Consensus Problem}
-    TODO
+    Let's consider the problem of reaching agreement on a single value in a distributed, asynchronous system of processes.
+
+    \vspace{0.25cm}
+
+    For example, in a distributed database, all entities that have partecipated in the processing of a particular transaction need to agree wether to commit or rollback.
+
+    \vspace{0.25cm}
+
+    Whatever decision is made, all entities must make the same decision in order to preserve the consistency of the database.
   \end{frame}
 
   \begin{frame}{Faults}
@@ -43,7 +51,7 @@
   \end{frame}
 
   \begin{frame}{The FLP Theorem}
-    In 1985, Michael Fischer, Nancy Lynch, and Michael Paterson proved the surprising result that no completely asynchronous protocol can tolerate even a single unannounced process death.
+    In 1985, Michael Fischer, Nancy Lynch, and Michael Paterson proved the surprising result that no completely asynchronous consensus protocol can tolerate even a single unannounced process death.
 
     \vspace{0.25cm}
 
