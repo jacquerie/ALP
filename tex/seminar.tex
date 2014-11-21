@@ -464,7 +464,45 @@
   \end{frame}
 
   \begin{frame}{Proof of main result}
-    TODO
+    Let's construct an admissible nondeciding run in stages. We mantain a queue
+    of processes, initially in an arbitrary order, and the message buffer in a
+    configuration is ordered according to the time the message were sent,
+    earliest first.
+
+    \vspace{0.25cm}
+
+    Each stage consists of one or more process steps. A stage ends when the
+    process that heads the queue takes a step in which, if its message queue
+    was not empty at the start of the stage, its earliest message is received.
+    This process is then moved to the back of the queue.
+
+    \vspace{0.25cm}
+
+    In any infinite sequence of such stages every process takes infinitely many
+    steps and receives every message sent to it. The run is therefore
+    admissible.
+  \end{frame}
+
+  \begin{frame}{Proof of main result}
+    Let \(C_0\) be a bivalent initial configuration whose existence is assured
+    by Lemma 2.
+
+    \vspace{0.25cm}
+
+    Suppose then that configuration \(C\) is bivalent and that process \(p\)
+    heads the priority queue. Let \(m\) be the earliest message to \(p\) in
+    \(C\)'s message buffer, if any, and \(\varnothing\) otherwise. Let \(e =
+    (p, m)\).
+
+    \vspace{0.25cm}
+
+    By Lemma 3, there is a bivalent configuration \(C'\) reachable from \(C\)
+    by a schedule in which \(e\) is the last event applied.
+
+    \vspace{0.25cm}
+
+    Since each stage ends in a bivalent configuration, every stage in the
+    construction of the infinite schedule succeds. \qed
   \end{frame}
 
   \begin{frame}{Conclusions}
