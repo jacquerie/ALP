@@ -55,15 +55,15 @@
 
     \vspace{0.25cm}
 
-    One can even consider more \textbf{Byzantine} types of failures, in which
-    faulty processes might go completely haywire, perhaps even sending messages
-    according to some malevolent plan.
+    One can even consider \textbf{Byzantine} types of failures, in which faulty
+    processes might go completely haywire, perhaps sending messages according
+    to some malevolent plan \cite{LSP82}.
   \end{frame}
 
   \begin{frame}{The FLP Theorem}
     In 1985, Michael Fischer, Nancy Lynch, and Michael Paterson proved the
     surprising result that no completely asynchronous consensus protocol can
-    tolerate even a single unannounced process death.
+    tolerate even a single unannounced process death \cite{FLP85}.
 
     \vspace{0.25cm}
 
@@ -269,7 +269,7 @@
   \end{frame}
 
   \begin{frame}{Main result}
-    \begin{theorem}[Fischer, Lynch, Paterson \cite{FLP85}]
+    \begin{theorem}[Fischer, Lynch, Paterson 1985]
       No consensus protocol is totally correct in spite of one fault.
     \end{theorem}
 
@@ -405,6 +405,13 @@
   \end{frame}
 
   \begin{frame}{Proof of Lemma 3}
+    We call two configurations \textbf{neighbors} if one results from the other
+    in a single step. Then there exists neighbors \(C_0, C_1\in\mathcal{C}\)
+    such that \(D_i = e(C_i)\) is \(i\)-valent for \(i = 0,1\). WLOG, we can
+    assume \(C_1 = e'(C_0)\) where \(e' = (p, m)\).
+
+    \vspace{0.25cm}
+
     TODO
   \end{frame}
 
