@@ -338,12 +338,12 @@
       \(P\) has a bivalent initial configuration.
     \end{lemma}
 
-    \vspace{0.25cm}
+    \pause\vspace{0.25cm}
 
     Assume by contradiction that there isn't. Then, by partial correctness,
     \(P\) must have both \(0\)-valent and \(1\)-valent initial configurations.
 
-    \vspace{0.25cm}
+    \pause\vspace{0.25cm}
 
     Let's call two initial configurations \textbf{adjacent} if they differ only
     in the initial value \(x_p\) of a single process \(p\). Any two initial
@@ -356,14 +356,14 @@
     adjacent to a \(1\)-valent configuration \(C_1\). Let \(p\) be the process
     in whose initial value they differ.
 
-    \vspace{0.25cm}
+    \pause\vspace{0.25cm}
 
     Consider some admissibile deciding run from \(C_0\) in which process \(p\)
     takes no steps, and let \(\sigma\) be the associated schedule. Then
     \(\sigma\) can be applied to \(C_1\) as well, and the corresponding
     configurations will be identical except for \(p\)'s internal state.
 
-    \vspace{0.25cm}
+    \pause\vspace{0.25cm}
 
     Both runs reach the same decision value; if it is \(1\) then \(C_0\) was
     bivalent, if it is \(0\) then \(C_1\) was bivalent. \qed
@@ -391,14 +391,14 @@
     configuration. We first show that \(\mathcal{D}\) contains both
     \(0\)-valent and \(1\)-valent configurations.
 
-    \vspace{0.25cm}
+    \pause\vspace{0.25cm}
 
     Let \(E_i\) be an \(i\)-valent configuration from \(C\). If \(E_i\in
     \mathcal{C}\), let \(F_i = e(E_i) \in \mathcal{D}\). Otherwise \(e\) was
     applied in reaching \(E_i\), and so there exists \(F_i \in \mathcal{D}\)
     from which \(E_i\) is reachable.
 
-    \vspace{0.25cm}
+    \pause\vspace{0.25cm}
 
     In either case, \(F_i\) is \(i\)-valent since it is in \(\mathcal{D}\),
     which contains no bivalent configuration by hypothesis.
@@ -410,12 +410,12 @@
     such that \(D_i = e(C_i)\) is \(i\)-valent for \(i = 0,1\). WLOG, we can
     assume \(C_1 = e'(C_0)\) where \(e' = (p, m)\).
 
-    \vspace{0.25cm}
+    \pause\vspace{0.25cm}
 
     If \(p \neq p'\), then \(D_1 = e'(D_0)\) by Lemma 1. This is impossible,
     since a successor of a \(0\)-valent configuration is \(0\)-valent.
 
-    \vspace{0.25cm}
+    \pause\vspace{0.25cm}
 
     If instead \(p = p'\), then consider any finite deciding run from \(C_0\)
     in which \(p\) takes no steps. Let \(\sigma\) be the corresponding
@@ -469,14 +469,14 @@
     configuration is ordered according to the time the message were sent,
     earliest first.
 
-    \vspace{0.25cm}
+    \pause\vspace{0.25cm}
 
     Each stage consists of one or more process steps. A stage ends when the
     process that heads the queue takes a step in which, if its message queue
     was not empty at the start of the stage, its earliest message is received.
     This process is then moved to the back of the queue.
 
-    \vspace{0.25cm}
+    \pause\vspace{0.25cm}
 
     In any infinite sequence of such stages every process takes infinitely many
     steps and receives every message sent to it. The run is therefore
@@ -487,19 +487,19 @@
     Let \(C_0\) be a bivalent initial configuration whose existence is assured
     by Lemma 2.
 
-    \vspace{0.25cm}
+    \pause\vspace{0.25cm}
 
     Suppose then that configuration \(C\) is bivalent and that process \(p\)
     heads the priority queue. Let \(m\) be the earliest message to \(p\) in
     \(C\)'s message buffer, if any, and \(\varnothing\) otherwise. Let \(e =
     (p, m)\).
 
-    \vspace{0.25cm}
+    \pause\vspace{0.25cm}
 
     By Lemma 3, there is a bivalent configuration \(C'\) reachable from \(C\)
     by a schedule in which \(e\) is the last event applied.
 
-    \vspace{0.25cm}
+    \pause\vspace{0.25cm}
 
     Since each stage ends in a bivalent configuration, every stage in the
     construction of the infinite schedule succeds. \qed
