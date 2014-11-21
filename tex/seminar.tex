@@ -142,8 +142,7 @@
   \end{frame}
 
   \begin{frame}{Nondeterministic messaging}
-    The message system acts nondeterministically, subject only to the condition
-    that if \texttt{receive(p)} is performed infinitely many times, then every
+    If \texttt{receive(p)} is performed infinitely many times, then every
     message \((p,m)\) in the message buffer is eventually delivered.
 
     \vspace{0.25cm}
@@ -184,9 +183,12 @@
   \end{frame}
 
   \begin{frame}{Configurations and steps}
-    A \textbf{configuration} of the system consists of the internal state of
-    each process, together with the contents of the message buffer. An
-    \textbf{initial configuration} is one in which each process starts at an
+    A \textbf{configuration} \(C\) of the system consists of the internal state
+    of each process, together with the contents of the message buffer.
+
+    \vspace{0.25cm}
+
+    An \textbf{initial configuration} is one in which each process starts at an
     initial state and the message buffer is empty.
 
     \vspace{0.5cm}
@@ -196,7 +198,7 @@
   \end{frame}
 
   \begin{frame}{Primitive steps and applicable events}
-    Let \(C\) be a configuration. A step consists of two phases:
+    A \textbf{primitive step} consists of two phases:
     \begin{enumerate}
       \item A \texttt{receive(p)} is performed on the message buffer in \(C\)
         to obtain a value \(m\in M\cup\{\varnothing\}\).
@@ -217,7 +219,7 @@
   \end{frame}
 
   \begin{frame}{Schedules and runs}
-    A \textbf{schedule} from \(C\) is a finite or infinite sequences \(\sigma\)
+    A \textbf{schedule} from \(C\) is a finite or infinite sequence \(\sigma\)
     of applicable events, in turn, starting from \(C\). The associated sequence
     of steps is called a \textbf{run}.
 
@@ -282,10 +284,9 @@
 
     \vspace{0.25cm}
 
-    \begin{proof}[Proof (sketch)]
-      Given an initial bivalent configuration, we construct an admissible run
-      that at each stage results in another bivalent configuration.
-    \end{proof}
+    \emph{Plan}: given an initial bivalent configuration, we construct an
+    admissible run that at each stage results in another bivalent
+    configuration.
   \end{frame}
 
   \begin{frame}{Lemma 1}
@@ -335,7 +336,7 @@
 
   \begin{frame}{Lemma 2}
     \begin{lemma}
-      \(P\) has a bivalent initial configuration.
+      Any consensus protocol \(P\) has a bivalent initial configuration.
     \end{lemma}
 
     \pause\vspace{0.25cm}
@@ -393,10 +394,10 @@
 
     \pause\vspace{0.25cm}
 
-    Let \(E_i\) be an \(i\)-valent configuration from \(C\). If \(E_i\in
-    \mathcal{C}\), let \(F_i = e(E_i) \in \mathcal{D}\). Otherwise \(e\) was
-    applied in reaching \(E_i\), and so there exists \(F_i \in \mathcal{D}\)
-    from which \(E_i\) is reachable.
+    Let \(E_i\) be an \(i\)-valent configuration from \(C\) for
+    \(i\in\{0,1\}\). If \(E_i\in \mathcal{C}\), let \(F_i = e(E_i) \in
+    \mathcal{D}\). Otherwise \(e\) was applied in reaching \(E_i\), and so
+    there exists \(F_i \in \mathcal{D}\) from which \(E_i\) is reachable.
 
     \pause\vspace{0.25cm}
 
@@ -407,8 +408,8 @@
   \begin{frame}{Proof of Lemma 3}
     We call two configurations \textbf{neighbors} if one results from the other
     in a single step. Then there exists neighbors \(C_0, C_1\in\mathcal{C}\)
-    such that \(D_i = e(C_i)\) is \(i\)-valent for \(i = 0,1\). WLOG, we can
-    assume \(C_1 = e'(C_0)\) where \(e' = (p, m)\).
+    such that \(D_i = e(C_i)\) is \(i\)-valent for \(i = 0,1\). We can assume
+    that \(C_1 = e'(C_0)\) where \(e' = (p, m)\).
 
     \pause\vspace{0.25cm}
 
@@ -506,8 +507,8 @@
   \end{frame}
 
   \begin{frame}{Conclusions}
-    We proved that no completely asynchronous protocol can tolerate even a
-    single \emph{unannounced} process death.
+    We proved that no completely asynchronous consensus protocol can tolerate
+    even a single \emph{unannounced} process death.
 
     \vspace{0.25cm}
 
