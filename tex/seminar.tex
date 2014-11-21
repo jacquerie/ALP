@@ -27,47 +27,68 @@
   \end{frame}
 
   \begin{frame}{The Distributed Consensus Problem}
-    Let's consider the problem of reaching agreement on a single value in a distributed, asynchronous system of processes.
+    Let's consider the problem of reaching agreement on a single value in a
+    distributed, asynchronous system of processes.
 
     \vspace{0.25cm}
 
-    For example, in a distributed database, all entities that have partecipated in the processing of a particular transaction need to agree wether to commit or rollback.
+    For example, in a distributed database, all entities that have partecipated
+    in the processing of a particular transaction need to agree wether to
+    commit or rollback.
 
     \vspace{0.25cm}
 
-    Whatever decision is made, all entities must make the same decision in order to preserve the consistency of the database.
+    Whatever decision is made, all entities must make the same decision in
+    order to preserve the consistency of the database.
   \end{frame}
 
   \begin{frame}{Faults}
-    In this course we usually assumed that the partecipating processes and the network were completely reliable.
+
+    In this course we usually assumed that the partecipating processes and the
+    network were completely reliable.
 
     \vspace{0.25cm}
 
-    This is not the case with real systems, which are subject to a number of possible \textbf{faults}, such as process crashes, network partitioning, and lost, distorted, duplicated messages.
+    This is not the case with real systems, which are subject to a number of
+    possible \textbf{faults}, such as process crashes, network partitioning,
+    and lost, distorted, duplicated messages.
 
     \vspace{0.25cm}
 
-    One can even consider more \textbf{Byzantine} types of failures, in which faulty processes might go completely haywire, perhaps even sending messages according to some malevolent plan.
+    One can even consider more \textbf{Byzantine} types of failures, in which
+    faulty processes might go completely haywire, perhaps even sending messages
+    according to some malevolent plan.
   \end{frame}
 
   \begin{frame}{The FLP Theorem}
-    In 1985, Michael Fischer, Nancy Lynch, and Michael Paterson proved the surprising result that no completely asynchronous consensus protocol can tolerate even a single unannounced process death.
+    In 1985, Michael Fischer, Nancy Lynch, and Michael Paterson proved the
+    surprising result that no completely asynchronous consensus protocol can
+    tolerate even a single unannounced process death.
 
     \vspace{0.25cm}
 
-    Their proof did not consider Byzantine failures, and assumed that the message system is reliable — it delivers all messages correctly and exactly once.
+    Their proof did not consider Byzantine failures, and assumed that the
+    message system is reliable — it delivers all messages correctly and exactly
+    once.
 
     \vspace{0.25cm}
 
-    Nevertheless, even with these assumptions, the stopping of a single process at an inopportune time can cause any distributed consensus protocol to fail to reach agreement.
+    Nevertheless, even with these assumptions, the stopping of a single process
+    at an inopportune time can cause any distributed consensus protocol to fail
+    to reach agreement.
   \end{frame}
 
   \begin{frame}{Consensus protocol}
-    A \textbf{consensus protocol} is an asynchronous system of \(N\) processes (\(N\ge 2\)). Each process \(p\) has a one-bit \textbf{input register} \(x_p\), an \textbf{output register} \(y_p\) with values in \(\{\bot, 0, 1\}\) and an unbounded amount of internal storage.
+    A \textbf{consensus protocol} is an asynchronous system of \(N\) processes
+    (\(N\ge 2\)). Each process \(p\) has a one-bit \textbf{input register}
+    \(x_p\), an \textbf{output register} \(y_p\) with values in \(\{\bot, 0,
+    1\}\) and an unbounded amount of internal storage.
 
     \vspace{0.25cm}
 
-    \textbf{Initial states} prescribe fixed starting values for all but the input register; in particular, the output register starts with value \(\bot\).
+    \textbf{Initial states} prescribe fixed starting values for all but the
+    input register; in particular, the output register starts with value
+    \(\bot\).
 
     \vspace{0.25cm}
 
@@ -75,7 +96,10 @@
   \end{frame}
 
   \begin{frame}{Decision states}
-    The states in which the output register has value \(0\) or \(1\) are distinguished as being \textbf{decision states}. The transition function cannot change the value of the output register once the process has reached a decision state; that is, the output register is ``write-once''.
+    The states in which the output register has value \(0\) or \(1\) are
+    distinguished as being \textbf{decision states}. The transition function
+    cannot change the value of the output register once the process has reached
+    a decision state; that is, the output register is ``write-once''.
 
     \vspace{0.25cm}
 
@@ -99,19 +123,28 @@
   \end{frame}
 
   \begin{frame}{Message system}
-    A \textbf{message} is a pair \((p,m)\), where \(p\) is the name of the destination process and \(m\) is a ``message value'' from a fixed universe \(M\).
+    A \textbf{message} is a pair \((p,m)\), where \(p\) is the name of the
+    destination process and \(m\) is a ``message value'' from a fixed universe
+    \(M\).
 
     \vspace{0.25cm}
 
-    The \textbf{message system} mantains a multiset, called the \textbf{message buffer}, of messages that have been sent but not yet delivered. It supports two abstract operations:
+    The \textbf{message system} mantains a multiset, called the \textbf{message
+    buffer}, of messages that have been sent but not yet delivered. It supports
+    two abstract operations:
     \begin{description}
       \item[\texttt{ send(p,m)}:] Places \((p,m)\) in the message buffer.
-	  \item[\texttt{receive(p)}:] Deletes some message \((p,m)\) from the buffer and returns \(m\), in which case we say \((p,m)\) is \textbf{delivered}, or returns the special null marker \(\varnothing\) and leaves the buffer unchanged.
+      \item[\texttt{receive(p)}:] Deletes some message \((p,m)\) from the
+        buffer and returns \(m\), in which case we say \((p,m)\) is
+        \textbf{delivered}, or returns the special null marker \(\varnothing\)
+        and leaves the buffer unchanged.
     \end{description}
   \end{frame}
 
   \begin{frame}{Nondeterministic messaging}
-    The message system acts nondeterministically, subject only to the condition that if \texttt{receive(p)} is performed infinitely many times, then every message \((p,m)\) in the message buffer is eventually delivered.
+    The message system acts nondeterministically, subject only to the condition
+    that if \texttt{receive(p)} is performed infinitely many times, then every
+    message \((p,m)\) in the message buffer is eventually delivered.
 
     \vspace{0.25cm}
 
@@ -151,43 +184,57 @@
   \end{frame}
 
   \begin{frame}{Configurations and steps}
-    A \textbf{configuration} of the system consists of the internal state of each process, together with the contents of the message buffer. An \textbf{initial configuration} is one in which each process starts at an initial state and the message buffer is empty.
+    A \textbf{configuration} of the system consists of the internal state of
+    each process, together with the contents of the message buffer. An
+    \textbf{initial configuration} is one in which each process starts at an
+    initial state and the message buffer is empty.
 
     \vspace{0.5cm}
 
-    A \textbf{step} takes one configuration to another and consists of a primitive step by a single process \(p\).
+    A \textbf{step} takes one configuration to another and consists of a
+    primitive step by a single process \(p\).
   \end{frame}
 
   \begin{frame}{Primitive steps and applicable events}
     Let \(C\) be a configuration. A step consists of two phases:
     \begin{enumerate}
-      \item A \texttt{receive(p)} is performed on the message buffer in \(C\) to obtain a value \(m\in M\cup\{\varnothing\}\).
-      \item Depending on \(p\)'s internal state in \(C\) and on \(m\), \(p\) enters a new internal state and sends a finite set of messages to other processes.
+      \item A \texttt{receive(p)} is performed on the message buffer in \(C\)
+        to obtain a value \(m\in M\cup\{\varnothing\}\).
+      \item Depending on \(p\)'s internal state in \(C\) and on \(m\), \(p\)
+        enters a new internal state and sends a finite set of messages to other
+        processes.
     \end{enumerate}
 
     \vspace{0.25cm}
 
-    The step is completely determined by the pair \(e = (p,m)\), which we call an \textbf{event}.
+    The step is completely determined by the pair \(e = (p,m)\), which we call
+    an \textbf{event}.
 
     \vspace{0.25cm}
 
-    An event \(e\) that \emph{could happen} at configuration \(C\) is called \textbf{applicable}, and the resulting configuration is denoted \(e(C)\).
+    An event \(e\) that \emph{could happen} at configuration \(C\) is called
+    \textbf{applicable}, and the resulting configuration is denoted \(e(C)\).
   \end{frame}
 
   \begin{frame}{Schedules and runs}
-    A \textbf{schedule} from \(C\) is a finite or infinite sequences \(\sigma\) of applicable events, in turn, starting from \(C\). The associated sequence of steps is called a \textbf{run}.
+    A \textbf{schedule} from \(C\) is a finite or infinite sequences \(\sigma\)
+    of applicable events, in turn, starting from \(C\). The associated sequence
+    of steps is called a \textbf{run}.
 
     \vspace{0.25cm}
 
-    If \(\sigma\) is finite, we let \(\sigma(C)\) denote the resulting configuration, which is said to be \textbf{reachable} from \(C\).
+    If \(\sigma\) is finite, we let \(\sigma(C)\) denote the resulting
+    configuration, which is said to be \textbf{reachable} from \(C\).
 
     \vspace{0.25cm}
 
-    A configuration reachable from some initial configuration is said to be \textbf{accessible}.
+    A configuration reachable from some initial configuration is said to be
+    \textbf{accessible}.
   \end{frame}
 
   \begin{frame}{Partial correctness}
-    A configuration \(C\) has \textbf{decision value} \(v\) if some process \(p\) is in a decision state with \(y_p = v\).
+    A configuration \(C\) has \textbf{decision value} \(v\) if some process
+    \(p\) is in a decision state with \(y_p = v\).
 
     \vspace{0.25cm}
 
@@ -201,11 +248,13 @@
   \end{frame}
 
   \begin{frame}{Total correctness in spite of one fault}
-    A process \(p\) is \textbf{nonfaulty} in run if it takes infinitely many steps, otherwise it is \textbf{faulty}.
+    A process \(p\) is \textbf{nonfaulty} in run if it takes infinitely many
+    steps, otherwise it is \textbf{faulty}.
 
     \vspace{0.25cm}
 
-    A run is \textbf{admissible} if at most one process is faulty and all messages sent to nonfaulty processes are eventually received.
+    A run is \textbf{admissible} if at most one process is faulty and all
+    messages sent to nonfaulty processes are eventually received.
 
     \vspace{0.25cm}
 
@@ -214,7 +263,8 @@
     \vspace{0.25cm}
 
     \begin{definition}[Total correctness in spite of one fault]
-      A consensus protocol \(P\) is \textbf{totaly correct in spite of one fault} if it is partially correct and every admissibile run is deciding.
+      A consensus protocol \(P\) is \textbf{totaly correct in spite of one
+      fault} if it is partially correct and every admissibile run is deciding.
     \end{definition}
   \end{frame}
 
@@ -225,23 +275,33 @@
 
     \vspace{0.25cm}
 
-    A configuration is \textbf{bivalent} if the set of decision values of configurations reachable from it has \(2\) elements. It is instead \textbf{\(0\)-valent} or \textbf{\(1\)-valent} according to the corresponding value.
+    A configuration is \textbf{bivalent} if the set of decision values of
+    configurations reachable from it has \(2\) elements. It is instead
+    \textbf{\(0\)-valent} or \textbf{\(1\)-valent} according to the
+    corresponding value.
 
     \vspace{0.25cm}
 
     \begin{proof}[Proof (sketch)]
-      Given an initial bivalent configuration, we construct an admissible run that at each stage results in another bivalent configuration.
+      Given an initial bivalent configuration, we construct an admissible run
+      that at each stage results in another bivalent configuration.
     \end{proof}
   \end{frame}
 
   \begin{frame}{Lemma 1}
     \begin{lemma}
-      Suppose that from some configuration \(C\), the schedules \(\sigma_1\), \(\sigma_2\) lead to configurations \(C_1\), \(C_2\) respectively. If the sets of processes taking steps in \(\sigma_1\) and \(\sigma_2\), respectively, are disjoint, then \(\sigma_2\) can be applied to \(C_1\) and \(\sigma_1\) can be applied to \(C_2\), and both lead to the same configuration \(C_3\).
+      Suppose that from some configuration \(C\), the schedules \(\sigma_1\),
+      \(\sigma_2\) lead to configurations \(C_1\), \(C_2\) respectively. If the
+      sets of processes taking steps in \(\sigma_1\) and \(\sigma_2\),
+      respectively, are disjoint, then \(\sigma_2\) can be applied to \(C_1\)
+      and \(\sigma_1\) can be applied to \(C_2\), and both lead to the same
+      configuration \(C_3\).
     \end{lemma}
 
     \vspace{0.25cm}
 
-    In other words: \textbf{schedules about disjoint processes commute with each other}.
+    In other words: \textbf{schedules about disjoint processes commute with
+    each other}.
   \end{frame}
 
   \begin{frame}{Proof of Lemma 1}
@@ -263,11 +323,14 @@
       }
     \end{figure}
 
-    Because the sets of processes are disjoint, an event in \(\sigma_1\) applicable to \(C\) is applicable to \(C_2\) as well.
+    Because the sets of processes are disjoint, an event in \(\sigma_1\)
+    applicable to \(C\) is applicable to \(C_2\) as well.
 
     \vspace{0.25cm}
 
-    Because of determinism, after all events are processed they must end up in the same state. \qed
+    Because of determinism, after all events are processed they must end up in
+    the same state. \qed
+
   \end{frame}
 
   \begin{frame}{Lemma 2}
@@ -277,44 +340,60 @@
 
     \vspace{0.25cm}
 
-    Assume by contradiction that there isn't. Then, by partial correctness, \(P\) must have both \(0\)-valent and \(1\)-valent initial configurations.
+    Assume by contradiction that there isn't. Then, by partial correctness,
+    \(P\) must have both \(0\)-valent and \(1\)-valent initial configurations.
 
     \vspace{0.25cm}
 
-    Let's call two initial configurations \textbf{adjacent} if they differ only in the initial value \(x_p\) of a single process \(p\). Any two initial configurations are joined by a chain of inital configurations, each adjacent to the next.
+    Let's call two initial configurations \textbf{adjacent} if they differ only
+    in the initial value \(x_p\) of a single process \(p\). Any two initial
+    configurations are joined by a chain of inital configurations, each
+    adjacent to the next.
   \end{frame}
 
   \begin{frame}{Proof of Lemma 2}
-    Hence, there must exist a \(0\)-valent initial configuration \(C_0\) adjacent to a \(1\)-valent configuration \(C_1\). Let \(p\) be the process in whose initial value they differ.
+    Hence, there must exist a \(0\)-valent initial configuration \(C_0\)
+    adjacent to a \(1\)-valent configuration \(C_1\). Let \(p\) be the process
+    in whose initial value they differ.
 
     \vspace{0.25cm}
 
-    Consider some admissibile deciding run from \(C_0\) in which process \(p\) takes no steps, and let \(\sigma\) be the associated schedule. Then \(\sigma\) can be applied to \(C_1\) as well, and the corresponding configurations will be identical except for \(p\)'s internal state.
+    Consider some admissibile deciding run from \(C_0\) in which process \(p\)
+    takes no steps, and let \(\sigma\) be the associated schedule. Then
+    \(\sigma\) can be applied to \(C_1\) as well, and the corresponding
+    configurations will be identical except for \(p\)'s internal state.
 
     \vspace{0.25cm}
 
-    Both runs reach the same decision value; if it is \(1\) then \(C_0\) was ambivalent, if it is \(0\) then \(C_1\) was ambivalent. \qed
+    Both runs reach the same decision value; if it is \(1\) then \(C_0\) was
+    bivalent, if it is \(0\) then \(C_1\) was bivalent. \qed
   \end{frame}
 
   \begin{frame}{Lemma 3}
     \begin{lemma}
-      Let \(C\) be a bivalent configuration of \(P\), and let \(e = (p,m)\) be an event that is applicable to \(C\). Let \(\mathcal{C}\) be the set of configurations reachable from \(C\) without applying \(e\), and let \(\mathcal{D} = e(\mathcal{C}) = \{ e(E) \vert E \in \mathcal{C} \text{ and } e \text{ is applicable to \(E\)} \}\). Then, \(\mathcal{D}\) contains a bivalent configuration.
+      Let \(C\) be a bivalent configuration of \(P\), and let \(e = (p,m)\) be
+      an event that is applicable to \(C\). Let \(\mathcal{C}\) be the set of
+      configurations reachable from \(C\) without applying \(e\), and let
+      \(\mathcal{D} = e(\mathcal{C}) = \{ e(E) \vert E \in \mathcal{C} \text{
+      and } e \text{ is applicable to \(E\)} \}\). Then, \(\mathcal{D}\)
+      contains a bivalent configuration.
     \end{lemma}
 
     \vspace{0.25cm}
 
-    In other words: given a bivalent configuration and an event \(e\) applicable to it, \textbf{we construct another bivalent configuration having \(e\) as the last applied event}.
+    In other words: given a bivalent configuration and an event \(e\)
+    applicable to it, \textbf{we construct another bivalent configuration
+    having \(e\) as the last applied event}.
   \end{frame}
 
   \begin{frame}{Proof of Lemma 3}
-    \begin{proof}[Proof (Lemma 3)]
-      Assume by contradiction that \(\mathcal{D}\) contains no bivalent configuration. We first show that \(\mathcal{D}\) contains both \(0\)-valent and \(1\)-valent configurations.
-    \end{proof}
+    Assume by contradiction that \(\mathcal{D}\) contains no bivalent
+    configuration. We first show that \(\mathcal{D}\) contains both
+    \(0\)-valent and \(1\)-valent configurations.
   \end{frame}
 
   \begin{frame}{Proof of main result}
-    \begin{proof}[Proof (main result)]
-    \end{proof}
+    TODO
   \end{frame}
 
   \begin{frame}{Conclusions}
