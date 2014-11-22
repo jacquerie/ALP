@@ -244,7 +244,7 @@
       A consensus protocol is \textbf{partially correct} if:
       \begin{enumerate}
         \item No accessible configuration has more than one decision value.
-        \item For each \(v\in \{0,1\}\), some accessible configuration has decision value \(v\).
+        \item For each \(v\in\{0,1\}\), some accessible configuration has decision value \(v\).
       \end{enumerate}
     \end{definition}
   \end{frame}
@@ -394,7 +394,7 @@
 
     \pause\vspace{0.25cm}
 
-    Let \(E_i\) be an \(i\)-valent configuration from \(C\) for
+    Let \(E_i\) be an \(i\)-valent configuration reachable from \(C\) for
     \(i\in\{0,1\}\). If \(E_i\in \mathcal{C}\), let \(F_i = e(E_i) \in
     \mathcal{D}\). Otherwise \(e\) was applied in reaching \(E_i\), and so
     there exists \(F_i \in \mathcal{D}\) from which \(E_i\) is reachable.
@@ -408,8 +408,8 @@
   \begin{frame}{Proof of Lemma 3}
     We call two configurations \textbf{neighbors} if one results from the other
     in a single step. Then there exists neighbors \(C_0, C_1\in\mathcal{C}\)
-    such that \(D_i = e(C_i)\) is \(i\)-valent for \(i = 0,1\). We can assume
-    that \(C_1 = e'(C_0)\) where \(e' = (p, m)\).
+    such that \(D_i = e(C_i)\) is \(i\)-valent for \(i\in\{0,1\}\). We can
+    assume that \(C_1 = e'(C_0)\) where \(e' = (p', m')\).
 
     \pause\vspace{0.25cm}
 
@@ -425,7 +425,7 @@
 
   \begin{frame}{Proof of Lemma 3}
     By Lemma 1, \(\sigma\) is applicable to \(D_i\) and leads to an
-    \(i\)-valent configuration \(E_i = \sigma(D_i)\) for \(i = 0,1\).
+    \(i\)-valent configuration \(E_i = \sigma(D_i)\) for \(i\in\{0,1\}\).
 
     \vspace{0.25cm}
 
@@ -506,7 +506,7 @@
     construction of the infinite schedule succeds. \qed
   \end{frame}
 
-  \begin{frame}{Conclusions}
+  \begin{frame}{Final remarks}
     We proved that no completely asynchronous consensus protocol can tolerate
     even a single \emph{unannounced} process death.
 
